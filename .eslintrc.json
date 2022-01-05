@@ -4,7 +4,11 @@
     "es2021": true,
     "jest": true
   },
-  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:prettier/recommended" // Make this the last element so prettier config overrides other formatting rules
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -30,6 +34,6 @@
       }
     ],
     "max-len": ["off"],
-    "prettier/prettier": ["error"]
+    "prettier/prettier": ["error", {}, { "usePrettierrc": true }] // Use our .prettierrc file as source
   }
 }
