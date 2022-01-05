@@ -11,8 +11,7 @@ npm run lint ||
     false;
 )
 
+npm run lint:staged
+
 # If everything passes... Now we can commit
 echo '🎉🎉🎉🎉 You win this time... I am committing this now. ✨🚀🏄‍♂️🍻'
-
-
-npm run lint:staged
