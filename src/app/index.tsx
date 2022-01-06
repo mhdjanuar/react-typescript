@@ -1,16 +1,29 @@
-import { Routes, Route } from 'react-router-dom';
+import React from 'react';
+import { Routes, Route, Outlet, Link } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
-import { About } from './pages/About';
+// import { AuthProvider } from './routes';
 
-function App() {
-  return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="about" element={<About />} />
-      </Routes>
-    </div>
-  );
+interface AuthContextType {
+  user: any;
 }
 
-export default App;
+const AuthContext = React.createContext<AuthContextType>(null!);
+
+function AuthProvider({ children }: { children: React.ReactNode }) {
+  const [user, setUser] = React.useState<any>(null);
+  setUser('newUser');
+
+  const value = React.useMemo(() => ({ user }), []);
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </AuthProvider>
+  );
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import { store } from './store';
 import App from './app';
 import reportWebVitals from './reportWebVitals';
@@ -9,8 +10,9 @@ import reportWebVitals from './reportWebVitals';
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <h1>asd</h1>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

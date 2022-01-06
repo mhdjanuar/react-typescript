@@ -52,6 +52,7 @@
     // htmlFor
     "jsx-a11y/label-has-associated-control": 0,
     "no-shadow": 0,
-    "default-param-last": ["off"]
+    "default-param-last": ["off"],
+    "react/no-unescaped-entities": 0
   }
 }
