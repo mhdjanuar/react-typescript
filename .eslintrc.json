@@ -19,7 +19,8 @@
   },
   "plugins": ["react", "@typescript-eslint", "prettier"],
   "rules": {
-    "no-unused-vars": "error",
+    "react/react-in-jsx-scope": ["off"],
+    "no-unused-vars": "off",
     // so that ESLint is happy about JSX inside your TypeScript files:
     "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
     "import/no-unresolved": ["off"],
@@ -34,6 +35,23 @@
       }
     ],
     "max-len": ["off"],
-    "prettier/prettier": ["error", {}, { "usePrettierrc": true }] // Use our .prettierrc file as source
+    "prettier/prettier": ["error", {}, { "usePrettierrc": true }], // Use our .prettierrc file as source,
+    "no-undef": "off",
+    "import/prefer-default-export": ["off"],
+    /*
+    UPDATE: this is actually a bug in the airbnb configuration.
+    The correct setting should be function-declaration, and so the correct solution is to override the rule in your .eslintrc.js
+    */
+    "react/function-component-definition": [
+      0,
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    // htmlFor
+    "jsx-a11y/label-has-associated-control": 0,
+    "no-shadow": 0,
+    "default-param-last": ["off"]
   }
 }
