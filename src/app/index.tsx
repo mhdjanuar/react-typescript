@@ -1,29 +1,25 @@
 import React from 'react';
-import { Routes, Route, Outlet, Link } from 'react-router-dom';
-import { HomePage } from './pages/HomePage';
-// import { AuthProvider } from './routes';
+import { Routes, Route } from 'react-router-dom';
+import R from './routes';
 
-interface AuthContextType {
-  user: any;
-}
-
-const AuthContext = React.createContext<AuthContextType>(null!);
-
-function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = React.useState<any>(null);
-  setUser('newUser');
-
-  const value = React.useMemo(() => ({ user }), []);
-
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
-}
-
-export default function App() {
+const App: React.FC = () => {
   return (
-    <AuthProvider>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-      </Routes>
-    </AuthProvider>
+    <div className="app">
+      <R.AuthProvider>
+        <Routes>
+          <Route path="/login" element={<h1>Login</h1>} />
+          <Route
+            path="/protected"
+            element={
+              <R.RequireAuth>
+                <R.ProtectedPage />
+              </R.RequireAuth>
+            }
+          />
+        </Routes>
+      </R.AuthProvider>
+    </div>
   );
-}
+};
+
+export default React.memo(App);
