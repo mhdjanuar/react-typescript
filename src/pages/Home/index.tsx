@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { incrementCounter } from '../../store/slices/counter';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
+// import UserService from '../../services/userService';
 
-const Home: React.FC = () => {
+const Home: React.FC<{}> = () => {
   const { theCounter } = useAppSelector(state => state.counterSlice);
   const dispatch = useAppDispatch();
 
