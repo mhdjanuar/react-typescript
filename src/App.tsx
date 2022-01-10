@@ -1,13 +1,14 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import R from './routes';
+import HomePage from './pages/Home';
 
 const App: React.FC = () => {
   return (
     <div className="app">
       <R.AuthProvider>
         <Routes>
-          <Route path="/login" element={<h1>Login</h1>} />
+          <Route path="/" element={<HomePage />} />
           <Route
             path="/protected"
             element={
